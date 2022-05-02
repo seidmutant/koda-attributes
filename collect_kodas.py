@@ -1,6 +1,9 @@
 import csv
 import numpy as np
+import pandas as pd
 import requests
+
+from os.path import exists
 
 # {
 #   "image": "https://assets.otherside.xyz/kodas/246116ea482a2923e0349f22060af31242fdd4fa5dfc41a82111a89208ee63f2.png",
@@ -27,15 +30,31 @@ def parse_koda(token_id, response_json):
 
     return koda
 
+def get_token_ids(filename):
+    """
+    Return a list of token ids to process.
+    """
+
+    if exists(filename):
+        df = pd.read_csv(filename)
+        token_ids_saved = np.array(df['token_id'])
+        return sorted(list(set(np.arange(0, 10000)) - set(token_ids_saved)))
+    else:
+        return np.arange(0, 10000)
+
 def run():
 
-     with open("data/kodas.csv", "a") as kodas_file:
+    filename = "data/kodas.csv"
+    token_ids = get_token_ids(filename)
+
+    with open(filename, "a") as kodas_file:
 
         writer = csv.writer(kodas_file)
-        header = ['token_id', 'image', 'head', 'eyes', 'core', 'clothing', 'weapon']
-        writer.writerow(header)         
+        if not exists(filename):
+            header = ['token_id', 'image', 'head', 'eyes', 'core', 'clothing', 'weapon']
+            writer.writerow(header)         
 
-        for token_id in np.arange(0, 10000):
+        for token_id in token_ids:
 
             print (token_id)
 
