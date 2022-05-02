@@ -43,5 +43,5 @@ for token_id in np.arange(0, 10000):
         response_json = response.json()
         parse_attributes(attribute_dict, response_json)
     
-with open('attribute_count.json', 'w') as f:
+with open('data/attribute_count.json', 'w') as f:
     json.dump(attribute_dict, f)

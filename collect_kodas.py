@@ -29,7 +29,7 @@ def parse_koda(token_id, response_json):
 
 def run():
 
-     with open("kodas.csv", "a") as kodas_file:
+     with open("data/kodas.csv", "a") as kodas_file:
 
         writer = csv.writer(kodas_file)
         header = ['token_id', 'image', 'head', 'eyes', 'core', 'clothing', 'weapon']
