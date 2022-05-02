@@ -32,16 +32,19 @@ def parse_attributes(attribute_dict, response_json):
 
     return attribute_dict
 
-
-attribute_dict = {}
-for token_id in np.arange(0, 10000):
-
-    print (token_id)
-
-    response = requests.get('https://api.otherside.xyz/kodas/{}'.format(token_id))
-    if response.status_code == 200:
-        response_json = response.json()
-        parse_attributes(attribute_dict, response_json)
+def run():
     
-with open('data/attribute_count.json', 'w') as f:
-    json.dump(attribute_dict, f)
+    attribute_dict = {}
+    for token_id in np.arange(0, 10000):
+
+        print (token_id)
+
+        response = requests.get('https://api.otherside.xyz/kodas/{}'.format(token_id))
+        if response.status_code == 200:
+            response_json = response.json()
+            parse_attributes(attribute_dict, response_json)
+        
+    with open('data/attribute_count.json', 'w') as f:
+        json.dump(attribute_dict, f)
+
+run()
