@@ -63,7 +63,7 @@ def get_token_ids(filename):
 
 def run():
 
-    filename = "data/kodas.csv"
+    filename = "data/lands.csv"
     token_ids = get_token_ids(filename)
     
     with open(filename, "a") as f:
