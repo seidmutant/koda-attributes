@@ -2,14 +2,10 @@
 Code to collect Koda metadata and calculate rarity.
 
 ```
-python3 -m collect_koda_attributes
-```
-
-```
 python3 -m collect_kodas
 ```
 
-Rarity is run in rarity.ipynb
+Rarity is run in rarity_calculation.ipynb
 
 ## Public Spreadsheet
 https://docs.google.com/spreadsheets/d/1FFRXkwPvVhTNgbWwigEX4R8aOaH2M578KUCKxP5ryZc/edit#gid=1486898806
